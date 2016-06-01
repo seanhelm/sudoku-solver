@@ -8,7 +8,7 @@ namespace SudokuSolver
         /// <summary>
         /// Int array to hold numbers for puzzle
         /// </summary>
-        public int[,] PuzzleArray { get; private set; }
+        public int[,] Puzzle { get; private set; }
 
         /// <summary>
         /// Constructor to call ParsePuzzle() in order to parse the string argument
@@ -48,7 +48,7 @@ namespace SudokuSolver
                         }
                         else
                         {
-                            throw new ArgumentException(String.Format("{0} contains invalid characters.", 
+                            throw new ArgumentException(String.Format("{0} contains invalid characters.",
                                 puzzleFormat), "puzzleFormat");
                         }
 
@@ -56,11 +56,11 @@ namespace SudokuSolver
                     }
                 }
 
-                PuzzleArray = puzzleArray;
+                Puzzle = puzzleArray;
             }
             else
             {
-                throw new ArgumentException(String.Format("{0} is not a valid square.", 
+                throw new ArgumentException(String.Format("{0} is not a valid square.",
                     puzzleFormat), "puzzleFormat");
             }
         }
