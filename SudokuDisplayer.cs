@@ -6,10 +6,10 @@ namespace SudokuSolver
     static class SudokuDisplayer
     {
         /// <summary>
-        /// 
+        /// Converts a 2D array representing a Sudoku puzzle to a string to be displayed
         /// </summary>
-        /// <param name="puzzleArray"></param>
-        /// <returns></returns>
+        /// <param name="puzzleArray">Sudoku puzzle as 2D array</param>
+        /// <returns>String representing Sudoku puzzle</returns>
         public static string Display(int[,] puzzleArray)
         {
             StringBuilder puzzleRep = new StringBuilder();
