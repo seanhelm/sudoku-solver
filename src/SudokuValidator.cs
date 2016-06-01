@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SudokuSolver
 {
     static class SudokuValidator
     {
         /// <summary>
-        /// Checks if a given sudoku array is a valid Sudoku puzzle
+        /// Checks if a given 2D array is a valid Sudoku puzzle
         /// </summary>
         /// <param name="sudokuArray">2D array representing Sudoku puzzle</param>
         /// <returns>True if it is a valid puzzle, false otherwise</returns>
@@ -65,7 +61,7 @@ namespace SudokuSolver
         }
 
         /// <summary>
-        /// Checks if a given sudoku array is a valid and complete Sudoku puzzle
+        /// Checks if a given 2D array is a valid and complete Sudoku puzzle
         /// </summary>
         /// <param name="sudokuArray">2D array representing Sudoku puzzle</param>
         /// <returns>True if it is a valid and complete puzzle, false otherwise</returns>

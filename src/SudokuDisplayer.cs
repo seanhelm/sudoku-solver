@@ -16,7 +16,7 @@ namespace SudokuSolver
 
             if(SudokuValidator.IsValidPuzzle(puzzleArray))
             {
-                for(int i = 0; i < puzzleArray.GetLength(0); i++)
+                for(int i = 0; i < 9; i++)
                 {
                     if(i % 3 == 0)
                     {
@@ -28,7 +28,7 @@ namespace SudokuSolver
                         puzzleRep.Append("+\n");
                     }
 
-                    for(int j = 0; j < puzzleArray.GetLength(1); j++)
+                    for(int j = 0; j < 9; j++)
                     {
                         if(j % 3 == 0)
                         {
