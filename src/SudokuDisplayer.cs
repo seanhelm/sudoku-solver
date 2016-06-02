@@ -8,13 +8,13 @@ namespace SudokuSolver
         /// <summary>
         /// Converts a 2D array representing a Sudoku puzzle to a string to be displayed
         /// </summary>
-        /// <param name="puzzleArray">Sudoku puzzle as 2D array</param>
+        /// <param name="puzzle">Sudoku puzzle as Puzzle object</param>
         /// <returns>String representing Sudoku puzzle</returns>
-        public static string Display(int[,] puzzleArray)
+        public static string Display(Puzzle puzzle)
         {
             StringBuilder puzzleRep = new StringBuilder();
 
-            if(SudokuValidator.IsValidPuzzle(puzzleArray))
+            if(SudokuValidator.IsValidPuzzle(puzzle))
             {
                 for(int i = 0; i < 9; i++)
                 {
@@ -23,7 +23,7 @@ namespace SudokuSolver
                         for(int k = 0; k < 3; k++)
                         {
                             puzzleRep.Append("+");
-                            puzzleRep.Append(new string('-', puzzleArray.GetLength(1) / 2 + 3));
+                            puzzleRep.Append(new string('-', puzzle.Array.GetLength(1) / 2 + 3));
                         }
                         puzzleRep.Append("+\n");
                     }
@@ -35,13 +35,13 @@ namespace SudokuSolver
                             puzzleRep.Append("| ");
                         }
 
-                        if(puzzleArray[i, j] == 0)
+                        if(puzzle.Array[i, j] == puzzle.EmptyCell)
                         {
                             puzzleRep.Append(". ");
                         }
                         else
                         {
-                            puzzleRep.Append(puzzleArray[i, j].ToString() + " ");
+                            puzzleRep.Append(puzzle.Array[i, j].ToString() + " ");
                         }
                     }
 
@@ -51,14 +51,14 @@ namespace SudokuSolver
                 for(int k = 0; k < 3; k++)
                 {
                     puzzleRep.Append("+");
-                    puzzleRep.Append(new string('-', puzzleArray.GetLength(1) / 2 + 3));
+                    puzzleRep.Append(new string('-', puzzle.Array.GetLength(1) / 2 + 3));
                 }
                 puzzleRep.Append("+\n");
             }
             else
             {
                 throw new ArgumentException(String.Format("{0} must be a valid sudoku puzzle.",
-                    puzzleArray), "puzzleArray");
+                    puzzle), "puzzle");
             }
 
             return puzzleRep.ToString();

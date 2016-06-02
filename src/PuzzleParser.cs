@@ -6,9 +6,14 @@ namespace SudokuSolver
     class PuzzleParser
     {
         /// <summary>
-        /// Int array to hold numbers for puzzle
+        /// Puzzle object to hold parsed puzzle data
         /// </summary>
-        public int[,] Puzzle { get; private set; }
+        public Puzzle Puzzle { get; private set; }
+
+        /// <summary>
+        /// Puzzle represented as one line string
+        /// </summary>
+        public string PuzzleAsString { get; private set; }
 
         /// <summary>
         /// Constructor to call ParsePuzzle() in order to parse the string argument
@@ -16,20 +21,41 @@ namespace SudokuSolver
         /// <param name="puzzleFormat">String representation of puzzle (using digits and dots)</param>
         public PuzzleParser(string puzzleFormat)
         {
-            ParsePuzzle(puzzleFormat);
+            Parse(puzzleFormat);
+        }
+
+        /// <summary>
+        /// Constructor to call ParsePuzzle() in order to parse the string argument
+        /// </summary>
+        /// <param name="puzzleFormat">String representation of puzzle (using digits and dots)</param>
+        /// <param name="emptyCell">Integer value to represent an empty cell in the puzzle</param>
+        public PuzzleParser(string puzzleFormat, int emptyCell)
+        {
+            Parse(puzzleFormat, emptyCell);
         }
 
         /// <summary>
         /// Parses a square puzzle as a string to a 2D number array
         /// </summary>
         /// <param name="puzzleFormat">String representation of puzzle (using digits and dots)</param>
-        /// <returns>Puzzle array</returns>
-        public void ParsePuzzle(string puzzleFormat)
+        public void Parse(string puzzleFormat)
+        {
+            Parse(puzzleFormat, 0);
+        }
+
+        /// <summary>
+        /// Parses a square puzzle as a string to a 2D number array
+        /// </summary>
+        /// <param name="puzzleFormat">String representation of puzzle (using digits and dots)</param>
+        /// <param name="emptyCell">Integer value to represent an empty cell in the puzzle</param>
+        public void Parse(string puzzleFormat, int emptyCell)
         {
             puzzleFormat = Regex.Replace(puzzleFormat, @"\s+", "");
 
             if(Math.Sqrt(puzzleFormat.Length) % 1 == 0)
             {
+                PuzzleAsString = puzzleFormat;
+
                 int width = (int)Math.Sqrt(puzzleFormat.Length);
                 int[,] puzzleArray = new int[width, width];
 
@@ -44,7 +70,7 @@ namespace SudokuSolver
                         }
                         else if(puzzleFormat[stringIndex] == '.')
                         {
-                            puzzleArray[i, j] = 0;
+                            puzzleArray[i, j] = emptyCell;
                         }
                         else
                         {
@@ -56,7 +82,7 @@ namespace SudokuSolver
                     }
                 }
 
-                Puzzle = puzzleArray;
+                Puzzle = new Puzzle(puzzleArray, emptyCell);
             }
             else
             {
