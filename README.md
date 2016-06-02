@@ -1,2 +1,2 @@
 # sudoku-solver
-Solves valid Sudoku puzzles using Backtracking in C#
+A Sudoku puzzle solver using Backtracking in C#
